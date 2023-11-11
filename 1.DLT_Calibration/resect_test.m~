@@ -1,9 +1,0 @@
-P1 = rand(3, 4)
-M = rand(3, 10);
-
-m = proj(P, M);
-
-P2 = resect(m, M)  %se tutto è corretto, le due P sono uguali (a meno di un fattore di scala)
-
-rank([P1(:), P2(:)]) %vettorizzo le p, le metto in una mat e calcolo il rango, Se sono collineari, il rango è 1 (ovvero sono uguali a meno di un fattore di scala, ovvero sono lin. dip.)
-%questa mi dà rango due per
