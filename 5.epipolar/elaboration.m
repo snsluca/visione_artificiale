@@ -32,37 +32,10 @@ m2 =  1.0e+03 * [
 
 run("../1.DLT_Calibration/elaboration_krt.m");
 
-F = ottopunti(m2, m1)
+%nota: se io scambio qui m1 ed m2, devo scambiare anche dove proietto le rette epipolari!
+%così proietto in immagine 2 le rette epipolari calcolate con F*m1;
+%se li scambio, proietto in 1 le rette epipolari calcolate con F*m2
+F = ottopunti(m1, m2);
 
-calc_average(m1, m2, F)
+avgval_F = calc_average(m1, m2, F);
 
-homom1 = [m1; ones(1, size(m1, 2))];
-homom2 = [m2; ones(1, size(m2, 2))];
-
-I1 = imread('IMG_20231110_150716.jpg');
-I2 = imread('IMG_20231110_150721.jpg');
-
-subplot(1,2,1)
-imshow(I1, []);
-hold on;
-plot(m1(1,:), m1(2,:), 'o');
-hold off
-
-subplot(1,2,2)
-imshow(I2, []);
-hold on;
-plot(m2(1,:), m2(2,:), 'o');
-%y = [m1
-
-for i=1:size(homom1, 2)
-    lin = F*homom1(:,i)
-    %retta nel formato: lin(1)*x + lin(2)*y + lin(3) = 0 , quindi : -(lin(1)*x+lin(3))/lin(2);
-    
-    x(1,1) = 0;
-    x(1,2) = size(I2, 2);
-    y(2,1) = -(lin(1)*x(1,1)+lin(3))/lin(2);
-    y(2,2) = -(lin(1)*x(1,2)+lin(3))/lin(2);
-    
-    plot(x, y, '-x');
-end
-hold off

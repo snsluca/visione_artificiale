@@ -9,5 +9,4 @@ function avgval = calc_average(m1, m2, F)
     end
     
     %i valori devono essere tutti piccoli
-    average_value = mean(tmp) 
-
+    avgval = mean(tmp);
