@@ -7,7 +7,7 @@ function F = ottopunti (m1, m2)
     A = [];
 
     for i=1:n
-        A = [A; kron(m1(:,i)', m2(:,i)');
+        A = [A; kron(m1(:,i)', m2(:,i)')];
     end
 
     [U, D, V] = svd(A);
