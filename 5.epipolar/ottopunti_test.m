@@ -14,3 +14,5 @@ F = ottopunti(m2, m1);
 
 %come facciamo a sapere che ha senso? Controlliamo che la F abbia senso rispetto ai suoi stessi punti:
 calc_average(m1, m2, F)
+
+E = K'*F*K
