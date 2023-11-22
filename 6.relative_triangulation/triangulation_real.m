@@ -40,8 +40,8 @@ m2 =  1.0e+03 * [
     %2.9013    1.0775
 ]';
 
-run("../1.DLT_Calibration/elaboration_krt.m");
-%run("../2.Sturm_Maybank_Zhang_calibration/elaboration.m");
+%run("../1.DLT_Calibration/elaboration_krt.m");
+run("../2.Sturm_Maybank_Zhang_calibration/elaboration.m");
 
 K
 
