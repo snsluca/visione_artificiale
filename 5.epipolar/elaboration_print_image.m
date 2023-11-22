@@ -6,13 +6,13 @@ avgval_F
 I1 = imread('IMG_20231110_150716.jpg');
 I2 = imread('IMG_20231110_150721.jpg');
 
-%subplot(1,2,1)
-%imshow(I1, []);
-%hold on;
-%plot(m1(1,:), m1(2,:), 'o');
-%hold off
+subplot(1,2,1)
+imshow(I1, []);
+hold on;
+plot(m1(1,:), m1(2,:), 'o');
+hold off
 
-%subplot(1,2,2)
+subplot(1,2,2)
 imshow(I2, []);
 hold on;
 plot(m2(1,:), m2(2,:), 'o');

@@ -7,6 +7,8 @@ function [R, t] = relative_orientation_23(m2, m1, K2, K1)
     m2 = inv(K2)*m2; %come sopra
 
     E = ottopunti(m2(1:2,:), m1(1:2,:));  %questo perchè ottopunti non lavora con i punti omogenei
+    %calc_average(m2(1:2,:), m1(1:2,:), E)
+
     S1 = skew([0 0 -1]); %matrice antisimmetrica di partenza
     R1 = eul([0 0 pi/2]); %matrice di rotazione di partenza  
 
