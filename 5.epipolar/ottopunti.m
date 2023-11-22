@@ -1,4 +1,4 @@
-function F = ottopunti (m1, m2)
+function F = ottopunti (m2, m1)
     n = size(m1, 2);
    
     m1 = [m1; ones(1,n)];

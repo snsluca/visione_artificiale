@@ -1,4 +1,4 @@
-addpath("../0.toolkit/m-files/", "../3.OPA/", "../1.DLT_Calibration/")
+addpath("../0.toolkit/m-files/", "../3.OPA/", "../5.epipolar/", "../1.DLT_Calibration/")
 
 m1 =  1.0e+03 * [ 
     1.4914    1.6023;
@@ -50,19 +50,22 @@ P1 = K*[eye(3) zeros(3,1)]
 P2 = K*[R t]
 
 for i =1:size(m2,2)
-MM(:,i) = classe_triangulation_23({P1, P2}, {m1(:,i), m2(:,i)});
+MM(:,i) = classe_triangulation_23({P1, P2}, {m1(:,i), m2(:,i)})
 end
 
 m1 = proj(P1, MM);
 m2 = proj(P2, MM);
 
-I = {imread('../5.epipolar/IMG_20231110_150716.jpg'),
-     imread('../5.epipolar/IMG_20231110_150721.jpg')};
+I1 = imread('../5.epipolar/IMG_20231110_150716.jpg');
+I2 = imread('../5.epipolar/IMG_20231110_150721.jpg');
 
-for i=1:2
-    subplot(1,2,i)
-    imshow(I{i}, []);
-    hold on;
-    plot(m1(1,:), m1(2,:), 'o',"MarkerFaceColor", "yellow");
-    hold off
-end
+subplot(1,2,1)
+imshow(I1, []);
+hold on
+plot(m1(1,:), m1(2,:), 'o',"MarkerFaceColor", "yellow");
+hold off
+subplot(1,2,2)
+imshow(I2, []);
+hold on
+plot(m2(1,:), m2(2,:), 'o',"MarkerFaceColor", "yellow");
+hold off

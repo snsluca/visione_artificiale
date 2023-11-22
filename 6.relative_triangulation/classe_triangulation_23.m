@@ -1,4 +1,4 @@
-function M = triangulation_23(P,m)
+function M = classe_triangulation_23(P,m)
 
 L = [];
 for j=1:length(P)
@@ -10,5 +10,3 @@ end
 M = V(:, end)./V(end, end);
 
 M = M(1:3);
-
-
