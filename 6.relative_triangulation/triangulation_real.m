@@ -19,8 +19,8 @@ end
 
 MM
 
-m1 = proj(P1, MM);
-m2 = proj(P2, MM);
+mm1 = proj(P1, MM);
+mm2 = proj(P2, MM);
 
 if topolino == 1 
 I1 = imread('IMG_20231110_150716.jpg');
@@ -34,12 +34,14 @@ figure(1)
 subplot(1,2,1)
 imshow(I1, []);
 hold on
-plot(m1(1,:), m1(2,:), 'o',"MarkerFaceColor", "yellow");
+plot(m1(1,:), m1(2,:), 'o',"MarkerFaceColor", "green");
+plot(mm1(1,:), mm1(2,:), 'o',"MarkerFaceColor", "yellow");
 hold off
 subplot(1,2,2)
 imshow(I2, []);
 hold on
-plot(m2(1,:), m2(2,:), 'o',"MarkerFaceColor", "yellow");
+plot(m2(1,:), m2(2,:), 'o',"MarkerFaceColor", "green");
+plot(mm2(1,:), mm2(2,:), 'o',"MarkerFaceColor", "yellow");
 hold off
 
 figure(2)
