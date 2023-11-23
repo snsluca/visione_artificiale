@@ -3,8 +3,13 @@ run("elaboration.m");
 F
 avgval_F
 
+if topolino == 1 
 I1 = imread('IMG_20231110_150716.jpg');
 I2 = imread('IMG_20231110_150721.jpg');
+else
+I1 = imread('1700683504527.jpg');
+I2 = imread('1700683504539.jpg');
+end
 
 subplot(1,2,1)
 imshow(I1, []);
