@@ -10,9 +10,9 @@ for i = 1:size(Ivec, 2)
     subplot(2,2,i)
     imshow(I, []);
     hold on;
-    plot(m{i}(1,:), m{i}(2,:), 'o');
+    plot(m{i}(1,:), m{i}(2,:), 'o', "MarkerFaceColor", "green");
 
     tmp = proj(P{i}, M);
-    plot(tmp(1,:), tmp(2,:), 'x');
+    plot(tmp(1,:), tmp(2,:), 'o', "MarkerFaceColor", "yellow");
     hold off
 end
