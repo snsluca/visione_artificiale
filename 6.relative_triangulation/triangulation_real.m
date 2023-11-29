@@ -9,9 +9,9 @@ run("../5.epipolar/points.m");
 
 K
 
-P1 = K*[eye(3) zeros(3,1)]
-[R, t] = relative_orientation_23(m2, m1, K, K)
-P2 = K*[R t]
+P2 = K*[eye(3) zeros(3,1)]
+[R, t] = relative_orientation_23(m1, m2, K, K)
+P1 = K*[R t]
 
 for i =1:size(m2,2)
 MM(:,i) = classe_triangulation_23({P1, P2}, {m1(:,i), m2(:,i)});
