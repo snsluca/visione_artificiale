@@ -1,7 +1,7 @@
-addpath("../0.toolkit/thirdparty/")
+addpath("../0.toolkit/thirdparty/", "../0.toolkit/m-files/")
 % ax^2 + bxy + cy^2 + dx + ey + f = 0
-aa = 6;
-bb = 4;
+aa = 1;
+bb = 1;
 
 n = 100;
 phi = (1:n)./n*(2*pi);
@@ -30,6 +30,8 @@ else
     %Solution calculated by following:
     %-- https://textbooks.math.gatech.edu/ila/least-squares.html#:~:text=So%20a%20least%2Dsquares%20solution,difference%20b%20%E2%88%92%20Ax%20is%20minimized.
     C = (A'*A)^-1*A'*b;
+
+    C = [C ; 1]
 end
 
 figure(1)
@@ -43,16 +45,32 @@ if mio == 0
     syms u v real
     gca = ezplot([u;v;1]'* C *[u;v;1], [-aa aa -bb bb] + [-1 1 -1 1] );
 else
-    a = C(1);
-    b = C(2);
-    c = C(3);
-    d = C(4);
-    e = C(5);
-    f = 1;
-    eq = @(xx,yy) a.*xx.^2+b.*xx.*yy+c.*yy.^2+d.*xx+e.*yy+f;
-    gca = fimplicit(eq, [-aa aa -bb bb] + [-1 1 -1 1]);
+    C1 = C;
+    a1 = C1(1);
+    b1 = C1(2);
+    c1 = C1(3);
+    d1 = C1(4);
+    e1 = C1(5);
+    f1 = C1(6); 
+    eq1 = @(xx,yy) a1.*xx.^2+b1.*xx.*yy+c1.*yy.^2+d1.*xx+e1.*yy+f1;
+    gca = fimplicit(eq1, [-aa aa -bb bb] + [-1 1 -1 1]);
     %gca = ezplot(eq, [-aa aa -bb bb] + [-1 1 -1 1] );
-end
+    set(gca,'Color', cmap(1,:), 'LineWidth', 1);
+    
+    C2 = simpleGN(@(CC) res(CC,x,y), C1);
+    a2 = C2(1);
+    b2 = C2(2);
+    c2 = C2(3);
+    d2 = C2(4);
+    e2 = C2(5);
+    f2 = C2(6); 
+    eq2 = @(xx,yy) a2.*xx.^2+b2.*xx.*yy+c2.*yy.^2+d2.*xx+e2.*yy+f2;
+    gca = fimplicit(eq2, [-aa aa -bb bb] + [-1 1 -1 1]);
+    set(gca,'Color', cmap(2,:), 'LineWidth', 3, 'LineStyle', ':');
 
-set(gca,'Color', cmap(1,:), 'LineWidth', 1);
-hold off;
+    disp('Non-refined residual');
+    [R1, ~] = res(C1,x,y)
+    disp('Refined residual');
+    [R2, ~] = res(C2,x,y)
+end
+hold off
