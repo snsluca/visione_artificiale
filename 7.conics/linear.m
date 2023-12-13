@@ -1,13 +1,26 @@
 addpath("../0.toolkit/thirdparty/", "../0.toolkit/m-files/")
 % ax^2 + bxy + cy^2 + dx + ey + f = 0
 aa = 1;
-bb = 5;
+bb = 2;
 
+alpha = 0.2;
 n = 1000;
 phi = (1:n)./n*(2*pi);
 phi = phi';
-x = aa*cos(phi)+0.2*rand(size(phi));
-y = bb*sin(phi)+0.2*rand(size(phi));
+x = aa*cos(phi)+alpha*rand(size(phi));
+y = bb*sin(phi)+alpha*rand(size(phi));
+
+centro = [0.5 0.5];
+x = x+centro(1);
+y = y+centro(2);
+
+theta = pi/4;
+R = [cos(theta) -sin(theta); sin(theta) cos(theta)];
+
+tmp = [x' ; y'];
+tmp = R*tmp;
+x = tmp(1, :)';
+y = tmp(2, :)';
 
 mio = 1;
 
