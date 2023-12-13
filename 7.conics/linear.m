@@ -1,17 +1,17 @@
 addpath("../0.toolkit/thirdparty/", "../0.toolkit/m-files/")
 % ax^2 + bxy + cy^2 + dx + ey + f = 0
-aa = 0.7;
-bb = 1;
+aa = 1;
+bb = 5;
 
-n = 100;
+n = 1000;
 phi = (1:n)./n*(2*pi);
 phi = phi';
-x = aa*cos(phi)+0.5*rand(size(phi));
-y = bb*sin(phi)+0.5*rand(size(phi));
+x = aa*cos(phi)+0.2*rand(size(phi));
+y = bb*sin(phi)+0.2*rand(size(phi));
 
 mio = 1;
 
-run("rand_nums.m");
+%run("rand_nums.m");
 
 if mio == 0
     m = [x';y';ones(1,n)];
@@ -37,7 +37,7 @@ else
 end
 
 figure(1)
-plot(x,y, 'o');
+plot(x,y, 'o', 'MarkerSize', 2);
 axis equal;
 grid on;
 hold on;
@@ -56,7 +56,7 @@ else
     f1 = C1(6); 
     eq1 = @(xx,yy) a1.*xx.^2+b1.*xx.*yy+c1.*yy.^2+d1.*xx+e1.*yy+f1;
     gca = fimplicit(eq1, [-aa aa -bb bb] + [-1 1 -1 1]);
-    set(gca,'Color', cmap(1,:), 'LineWidth', 1);
+    set(gca,'Color', cmap(3,:), 'LineWidth', 2, 'LineStyle', ':');
     
     C2 = simpleGN(@(CC) res(CC,x,y), C1);
     a2 = C2(1);
@@ -67,7 +67,7 @@ else
     f2 = C2(6); 
     eq2 = @(xx,yy) a2.*xx.^2+b2.*xx.*yy+c2.*yy.^2+d2.*xx+e2.*yy+f2;
     gca = fimplicit(eq2, [-aa aa -bb bb] + [-1 1 -1 1]);
-    set(gca,'Color', cmap(2,:), 'LineWidth', 3, 'LineStyle', ':');
+    set(gca,'Color', cmap(2,:), 'LineWidth', 2, 'LineStyle', ':');
 
     disp('Non-refined residual');
     [R1, ~] = res(C1,x,y)
