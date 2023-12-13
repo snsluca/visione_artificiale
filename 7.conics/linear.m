@@ -1,6 +1,6 @@
 addpath("../0.toolkit/thirdparty/", "../0.toolkit/m-files/")
 % ax^2 + bxy + cy^2 + dx + ey + f = 0
-aa = 1;
+aa = 0.7;
 bb = 1;
 
 n = 100;
@@ -10,6 +10,8 @@ x = aa*cos(phi)+0.5*rand(size(phi));
 y = bb*sin(phi)+0.5*rand(size(phi));
 
 mio = 1;
+
+run("rand_nums.m");
 
 if mio == 0
     m = [x';y';ones(1,n)];
@@ -54,7 +56,6 @@ else
     f1 = C1(6); 
     eq1 = @(xx,yy) a1.*xx.^2+b1.*xx.*yy+c1.*yy.^2+d1.*xx+e1.*yy+f1;
     gca = fimplicit(eq1, [-aa aa -bb bb] + [-1 1 -1 1]);
-    %gca = ezplot(eq, [-aa aa -bb bb] + [-1 1 -1 1] );
     set(gca,'Color', cmap(1,:), 'LineWidth', 1);
     
     C2 = simpleGN(@(CC) res(CC,x,y), C1);
