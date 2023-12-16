@@ -1,21 +1,23 @@
-addpath("../0.toolkit/m-files/", "../3.OPA/", "../5.epipolar/", "../1.DLT_Calibration/")
+addpath("../0.toolkit/m-files/", "../3.OPA/", "../5.epipolar/", "../1.DLT_Calibration/", "../7.triangulation_nonlin_fusiello/", "../0.toolkit/thirdparty/")
 
 topolino = 0;
 
 run("../5.epipolar/points.m");
 
-%run("../1.DLT_Calibration/elaboration_krt.m");
- run("../2.Sturm_Maybank_Zhang_calibration/elaboration.m");
+ run("../1.DLT_Calibration/elaboration_krt.m");
+%run("../2.Sturm_Maybank_Zhang_calibration/elaboration.m");
 
 K
 
 P2 = K*[eye(3) zeros(3,1)]
 [R, t] = relative_orientation_23(m1, m2, K, K)
+[R,t] = relative_nonlin(R, t, m1, m2, K, K);
 P1 = K*[R t]
 
 for i =1:size(m2,2)
 MM(:,i) = classe_triangulation_23({P1, P2}, {m1(:,i), m2(:,i)});
 end
+MM = triang_nonlin_batch(MM, {P1, P2}, {m1,m2});
 
 MM
 
@@ -28,6 +30,11 @@ I2 = imread('IMG_20231110_150721.jpg');
 else
 I1 = imread('1700683504527.jpg');
 I2 = imread('1700683504539.jpg');
+
+%I1 = rgb2gray(imread('1700683504527.jpg'));
+%I2 = rgb2gray(imread('1700683504539.jpg'));
+I1 = rgb2gray(imread('1702719956145.jpg'));
+I2 = rgb2gray(imread('1702719956160.jpg'));
 end
 
 figure(1)

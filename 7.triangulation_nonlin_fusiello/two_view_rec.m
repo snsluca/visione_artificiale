@@ -3,7 +3,6 @@ close all
 clear
 
 addpath("../0.toolkit/m-files/", "../0.toolkit/m-files/aux_fun/", "../0.toolkit/thirdparty/")
-
 %% input 
 
 % Compute (load) homologous points  m1 and m2
