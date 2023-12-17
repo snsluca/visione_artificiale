@@ -1,4 +1,4 @@
-load("matchedpoints.mat");
+load("matchedpoints_scatola.mat");
 if topolino == 1 
 m1 =  1.0e+03 * [ 
     1.4914    1.6023;

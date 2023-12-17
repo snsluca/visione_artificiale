@@ -33,8 +33,10 @@ I2 = imread('1700683504539.jpg');
 
 %I1 = rgb2gray(imread('1700683504527.jpg'));
 %I2 = rgb2gray(imread('1700683504539.jpg'));
-I1 = rgb2gray(imread('1702719956145.jpg'));
-I2 = rgb2gray(imread('1702719956160.jpg'));
+%I1 = rgb2gray(imread('1702719956145.jpg'));
+%I2 = rgb2gray(imread('1702719956160.jpg'));
+I1 = rgb2gray(imread('1702817288720.jpg'));
+I2 = rgb2gray(imread('1702817288728.jpg'));
 end
 
 figure(1)

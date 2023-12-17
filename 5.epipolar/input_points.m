@@ -1,7 +1,15 @@
+%sedia
 %I1 = rgb2gray(imread('1700683504527.jpg'));
 %I2 = rgb2gray(imread('1700683504539.jpg'));
-I1 = rgb2gray(imread('1702719956145.jpg'));
-I2 = rgb2gray(imread('1702719956160.jpg'));
+%calcolatrice
+%I1 = rgb2gray(imread('1702719956145.jpg'));
+%I2 = rgb2gray(imread('1702719956160.jpg'));
+%stringa = "matchedpoints_calcolatrice.mat"
+%scatola
+ I1 = rgb2gray(imread('1702817288720.jpg'));
+ I2 = rgb2gray(imread('1702817288728.jpg'));
+ stringa = "matchedpoints_scatola.mat"
+
 points1 = detectSIFTFeatures(I1)
 points2 = detectSIFTFeatures(I2)
 
@@ -13,9 +21,9 @@ disp('qua2')
 matchedPoints1 = valid_points1(indexPairs(:,1),:);
 matchedPoints2 = valid_points2(indexPairs(:,2),:);
 
-save("matchedpoints.mat","matchedPoints1","matchedPoints2");
+save(stringa, "matchedPoints1","matchedPoints2");
 
-if 0==1
+if 1==1
     disp('qua3')
     figure; 
     showMatchedFeatures(I1,I2,matchedPoints1,matchedPoints2);
