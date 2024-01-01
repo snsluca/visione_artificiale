@@ -1,5 +1,5 @@
-load("matchedpoints_scatola.mat");
-if topolino == 1 
+%manually calculated points "topolino" 
+%(saved in matchedpoints_topolino_manual.mat)
 m1 =  1.0e+03 * [ 
     1.4914    1.6023;
     0.9457    0.5423;
@@ -19,28 +19,6 @@ m1 =  1.0e+03 * [
     %2.8543    1.4300;
     %2.6376    0.3282
 ]';
-else
-if 1==0
-m1 =  1.0e+03 * [ 
-    1.1241    1.6955;
-    0.9524    1.1804;
-    1.4115    0.3339;
-    1.3357    0.0544;
-    1.5473    0.3698;
-    2.3459    0.6653;
-    2.2740    0.8729;
-    2.2461    1.0965;
-    1.6431    2.2066;
-    1.6950    1.6995;
-    1.5713    0.7971;
-    1.6192    1.1485;
-]';
-else
-    m1 = matchedPoints1.Location';
-end
-end
-
-if topolino == 1 
 m2 =  1.0e+03 * [ 
     0.4000    0.8269;
     1.3217    0.1350;
@@ -60,8 +38,24 @@ m2 =  1.0e+03 * [
     %1.2524    1.7947;
     %2.9013    1.0775
 ]';
-else
-if 1==0
+save("matchedpoints_topolino_manual.mat", "m1","m2");
+
+%manually calculated points "sedia" 
+%(saved in matchedpoints_sedia_manual.mat)
+m1 =  1.0e+03 * [ 
+    1.1241    1.6955;
+    0.9524    1.1804;
+    1.4115    0.3339;
+    1.3357    0.0544;
+    1.5473    0.3698;
+    2.3459    0.6653;
+    2.2740    0.8729;
+    2.2461    1.0965;
+    1.6431    2.2066;
+    1.6950    1.6995;
+    1.5713    0.7971;
+    1.6192    1.1485;
+]';
 m2 =  1.0e+03 * [ 
     1.6032    2.2186;
     1.6431    1.5557;
@@ -76,7 +70,4 @@ m2 =  1.0e+03 * [
     1.3357    1.0007;
     1.8148    1.0766;
 ]';
-else
-    m2 = matchedPoints2.Location';
-end
-end
+save("matchedpoints_sedia_manual.mat", "m1","m2");
